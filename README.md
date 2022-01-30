@@ -1,3 +1,14 @@
+# Пример разделения модулей и логики в Реакт
+- Родительский компонент `DataList` после монтирования, в методе  `componentDidMount()` вызывает методы:
+1) Получение данных с сервера методом `getApiPostsPromise` из api/getApiPosts.js
+2) Методы обработки данных:
+   - фильтрации/сокращения списка: `filterOnePageCollection` (logic/logic.js)
+   - мэппинга списка нужными значениями: `mapDataListPostsPromise` (mapping/mapping.js)
+3) Установка состояния с использованием полученных обработанных данных (`this.setState`).
+4) Рендеринг списка при помощи компонента-темплейта `DataListTemplate`, который импортирует компонент элемента списка `ListElement.js`
+
+**В родительском компоненте `DataList` описаны только состояние и его установка в метоже жизненного цикла`componentDidMount()`, остальные методы импортируются из отдельных модулей**
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
